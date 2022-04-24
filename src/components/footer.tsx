@@ -1,22 +1,29 @@
-import { Twitter, GitHub } from "@mui/icons-material";
-import { Container, Grid, Box, Typography, IconButton } from "@mui/material";
+import { Twitter, GitHub, Instagram } from "@mui/icons-material";
+import { Container, Grid, Box, IconButton } from "@mui/material";
 
 import Link from "./link";
 
 export const Footer: React.VFC = () => {
   return (
     <footer>
-      <Box position="absolute" sx={{ width: "100%", height: 100, bottom: 0 }}>
+      <Box
+        position="absolute"
+        width="100%"
+        bottom="0"
+        px={{ xs: 3, sm: 10 }}
+        py={{ xs: 5, sm: 10 }}
+        color="white"
+        bgcolor="text.secondary"
+      >
         <Container maxWidth="lg" sx={{ mt: 1 }}>
           <Grid container spacing={5}>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1} sx={{ mb: 1 }}>
-                Link
-              </Box>
+              <Box borderBottom={1}>Follow Me</Box>
               <IconButton
                 component={Link}
                 href="https://twitter.com/paveg_"
                 target="_blank"
+                color="inherit"
               >
                 <Twitter />
               </IconButton>
@@ -24,29 +31,35 @@ export const Footer: React.VFC = () => {
                 component={Link}
                 href="https://github.com/paveg"
                 target="_blank"
+                color="inherit"
               >
                 <GitHub />
               </IconButton>
+              <IconButton
+                component={Link}
+                href="https://www.instagram.com/_pavlog/"
+                target="_blank"
+                color="inherit"
+              >
+                <Instagram />
+              </IconButton>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1} sx={{ mb: 1 }}>
-                Help
-              </Box>
+              <Box borderBottom={1}>Help</Box>
               <Box>
-                <Typography color="textSecondary">
-                  <Link href="mailto:pavegy+work@gmail.com">Contact</Link>
-                </Typography>
+                <Link href="mailto:pavegy+work@gmail.com" color="inherit">
+                  Contact
+                </Link>
               </Box>
             </Grid>
           </Grid>
-          <Typography variant="body2" color="textSecondary" align="right">
+          <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
             {"Copyright © "}
             <Link color="inherit" href="https://twitter.com/paveg_">
               Funai
             </Link>{" "}
             {new Date().getFullYear()}
-            {"."}
-          </Typography>
+          </Box>
         </Container>
       </Box>
     </footer>
