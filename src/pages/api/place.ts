@@ -19,7 +19,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const client = new Client({});
-
+  console.log(process.env);
   const fetchPlaces = (): Place[] => {
     const promises = placeIDs.map(async (placeID: string) => {
       const response = await client.placeDetails({
