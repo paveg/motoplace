@@ -1,4 +1,4 @@
-export default {
+const config = {
   title: "motoplace",
   description: "A boilerplate of nextjs app created by paveg_",
   openGraph: {
@@ -13,3 +13,5 @@ export default {
     cardType: "summary_large_image",
   },
 };
+
+export default config;

@@ -2,15 +2,15 @@ import Typography from "@mui/material/Typography";
 
 import type { NextPage } from "next";
 
-const Home: NextPage = () => {
+const Cafe: NextPage = () => {
   return (
     <>
-      <Typography variant="h1">Home</Typography>
+      <Typography variant="h1">Cafe</Typography>
       <Typography variant="body1" component="p">
-        Get started by editing <code>pages/index.tsx</code>
+        Get started by editing <code>pages/cafe.tsx</code>
       </Typography>
     </>
   );
 };
 
-export default Home;
+export default Cafe;

@@ -5,7 +5,8 @@ import { DefaultSeo } from "next-seo";
 import Head from "next/head";
 
 import SEO from "../../next-seo.config";
-import theme from "../styles/theme";
+import { Layout } from "../layout";
+import { theme } from "../styles/theme";
 import createEmotionCache from "../utilities/createEmotionCache";
 
 import type { AppProps } from "next/app";
@@ -29,7 +30,9 @@ function App({ Component, pageProps }: CustomProps) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <DefaultSeo {...SEO} />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </CacheProvider>
   );
