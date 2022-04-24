@@ -9,7 +9,6 @@ export const Footer: React.VFC = () => {
       <Box
         position="absolute"
         width="100%"
-        bottom="0"
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
         color="white"
