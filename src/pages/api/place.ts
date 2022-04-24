@@ -16,31 +16,26 @@ export default async function handler(
 ) {
   const client = new Client({});
 
-  const fetchPlaces = () => {
-    const promises = placeIDs.map(async (placeID: string) => {
-      const response = await client.placeDetails({
-        params: {
-          place_id: placeID,
-          key: process.env.PLACES_API_KEY,
-          language: Language.ja,
-        },
-      });
-      const data = response.data.result;
-
-      return {
-        name: data.name,
-        address: data.formatted_address,
-        website: data.website,
-        url: data.url,
-        phoneNumber: data.formatted_phone_number,
-        rating: data.rating,
-        openingWeekdayText: data.opening_hours?.weekday_text,
-      };
+  const promises = placeIDs.map(async (placeID: string) => {
+    const response = await client.placeDetails({
+      params: {
+        place_id: placeID,
+        key: process.env.PLACES_API_KEY!,
+        language: Language.ja,
+      },
     });
+    const data = response.data.result;
 
-    return Promise.all(promises);
-  };
-  const n = await fetchPlaces();
+    return {
+      name: data.name,
+      address: data.formatted_address,
+      website: data.website,
+      url: data.url,
+      phoneNumber: data.formatted_phone_number,
+      rating: data.rating,
+      openingWeekdayText: data.opening_hours?.weekday_text,
+    };
+  });
 
-  res.status(200).json(n);
+  res.status(200).json(await Promise.all(promises));
 }

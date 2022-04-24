@@ -12,18 +12,23 @@ import { Place } from "../types/place";
 
 import type { NextPage } from "next";
 
+type Props = {
+  places: Place[];
+  children?: React.ReactNode;
+};
+
 export const getStaticProps: GetStaticProps = async () => {
   const result = await fetch(`${process.env.APP_URL}/api/place`);
-  const places = await result.json();
+  const data = await result.json();
 
   return {
     props: {
-      places,
+      places: data,
     },
   };
 };
 
-const Cafe: NextPage = ({ places }) => {
+const Cafe: NextPage<Props> = ({ places }) => {
   return (
     <>
       <Box mt={5}>
@@ -40,22 +45,26 @@ const Cafe: NextPage = ({ places }) => {
                 <Typography variant="body2">住所：{place.address}</Typography>
               </CardContent>
               <CardActions>
-                <IconButton
-                  component={Link}
-                  href={place.website}
-                  target="_blank"
-                  color="inherit"
-                >
-                  <Home />
-                </IconButton>
-                <IconButton
-                  component={Link}
-                  href={place.url}
-                  target="_blank"
-                  color="inherit"
-                >
-                  <Map />
-                </IconButton>
+                {place && place?.website && (
+                  <IconButton
+                    color="inherit"
+                    href={place.website}
+                    component={Link}
+                    target="_blank"
+                  >
+                    <Home />
+                  </IconButton>
+                )}
+                {place && place?.url && (
+                  <IconButton
+                    color="inherit"
+                    href={place.url}
+                    component={Link}
+                    target="_blank"
+                  >
+                    <Map />
+                  </IconButton>
+                )}
               </CardActions>
             </Paper>
           );
