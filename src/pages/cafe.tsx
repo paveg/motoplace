@@ -1,3 +1,4 @@
+import { Client, Language } from "@googlemaps/google-maps-services-js";
 import { Map, Home } from "@mui/icons-material";
 import Box from "@mui/material/Box";
 import CardActions from "@mui/material/CardActions";
@@ -17,14 +18,39 @@ type Props = {
   children?: React.ReactNode;
 };
 
+const placeIDs: string[] = [
+  "ChIJU8KczsXZGGARn4_GIca7M58",
+  "ChIJaR61hOaRGGARgenacDRPO6E",
+];
+
 export const getStaticProps: GetStaticProps = async () => {
-  const result = await fetch(`${process.env.APP_URL}/api/place`);
-  const data = await result.json();
+  const client = new Client({});
+
+  const promises = placeIDs.map(async (placeID: string) => {
+    const response = await client.placeDetails({
+      params: {
+        place_id: placeID,
+        key: process.env.PLACES_API_KEY!,
+        language: Language.ja,
+      },
+    });
+    const data = response.data.result;
+
+    return {
+      name: data.name,
+      address: data.formatted_address,
+      website: data.website,
+      url: data.url,
+      phoneNumber: data.formatted_phone_number,
+      rating: data.rating,
+      openingWeekdayText: data.opening_hours?.weekday_text,
+    };
+  });
+
+  const places = await Promise.all(promises);
 
   return {
-    props: {
-      places: data,
-    },
+    props: { places: places },
   };
 };
 
