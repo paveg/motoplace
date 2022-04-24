@@ -21,6 +21,12 @@ type Props = {
 const placeIDs: string[] = [
   "ChIJU8KczsXZGGARn4_GIca7M58",
   "ChIJaR61hOaRGGARgenacDRPO6E",
+  "ChIJXcgxhJ23HmARpdiHnSETRJs",
+  "ChIJm2TDil_DGGARt2n5dVDjvfI",
+  "ChIJOc1STRWxHmARHqlDGt4np54",
+  "ChIJFzcdDk3fGGAREsK9jMyU2QU",
+  "ChIJ3x1k-yPVGGARTYetKVNAUM4",
+  "ChIJ12jTBbjBGGARJLRRDR5hiDk",
 ];
 
 export const getStaticProps: GetStaticProps = async () => {
