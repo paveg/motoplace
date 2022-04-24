@@ -20,7 +20,7 @@ function App({ Component, pageProps }: CustomProps) {
   return (
     <CacheProvider value={clientSideEmotionCache}>
       <Head>
-        <title>nextjs-template</title>
+        <title>motopit</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"

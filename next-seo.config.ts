@@ -1,11 +1,11 @@
 export default {
-  title: "nextjs-template",
+  title: "motopit",
   description: "A boilerplate of nextjs app created by paveg_",
   openGraph: {
     type: "website",
     locale: "ja_JP",
     url: "https://www.url.ie/",
-    site_name: "nextjs-template",
+    site_name: "motopit",
   },
   twitter: {
     handle: "@paveg_",
