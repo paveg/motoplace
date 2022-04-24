@@ -11,6 +11,9 @@ jobs:
         with:
           node-version: 14.x
       - run: npm install && npm install -g @lhci/cli@0.6.x
+      - run: |
+          touch .env
+          echo "PLACES_API_KEY: ${{ secrets.PLACES_API_KEY }}" >> .env
       - run: npm run build
       - run: lhci autorun
         env:
