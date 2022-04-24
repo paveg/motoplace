@@ -1,13 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { Client } from "@googlemaps/google-maps-services-js";
+import { Client, Language } from "@googlemaps/google-maps-services-js";
 
 import { Place } from "../../types/place";
 
 import type { NextApiRequest, NextApiResponse } from "next";
-
-type Data = {
-  name: string;
-};
 
 const placeIDs: string[] = [
   "ChIJU8KczsXZGGARn4_GIca7M58",
@@ -16,17 +12,17 @@ const placeIDs: string[] = [
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Place[]>
 ) {
   const client = new Client({});
 
-  const fetchPlaces = (): Place[] => {
+  const fetchPlaces = () => {
     const promises = placeIDs.map(async (placeID: string) => {
       const response = await client.placeDetails({
         params: {
           place_id: placeID,
           key: process.env.PLACES_API_KEY,
-          language: "ja",
+          language: Language.ja,
         },
       });
       const data = response.data.result;

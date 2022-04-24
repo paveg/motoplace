@@ -13,8 +13,8 @@ import { Place } from "../types/place";
 import type { NextPage } from "next";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("http://localhost:3000/api/place");
-  const places = await res.json();
+  const result = await fetch(`${process.env.APP_URL}/api/place`);
+  const places = await result.json();
 
   return {
     props: {
