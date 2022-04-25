@@ -5,6 +5,8 @@ import { DefaultSeo } from "next-seo";
 import Head from "next/head";
 
 import SEO from "../../next-seo.config";
+import { GoogleAnalytics } from "../components/googleAnalytics";
+import { usePageView } from "../hooks/usePageView";
 import { Layout } from "../layout";
 import { theme } from "../styles/theme";
 import createEmotionCache from "../utilities/createEmotionCache";
@@ -18,6 +20,8 @@ interface CustomProps extends AppProps {
 }
 
 function App({ Component, pageProps }: CustomProps) {
+  usePageView();
+
   return (
     <CacheProvider value={clientSideEmotionCache}>
       <Head>
@@ -30,6 +34,7 @@ function App({ Component, pageProps }: CustomProps) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <DefaultSeo {...SEO} />
+        <GoogleAnalytics />
         <Layout>
           <Component {...pageProps} />
         </Layout>
