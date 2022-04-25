@@ -1,21 +1,15 @@
 import { Client, Language } from "@googlemaps/google-maps-services-js";
-import { Map, Home } from "@mui/icons-material";
 import Box from "@mui/material/Box";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import Container from "@mui/material/Container";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
-import IconButton from "@mui/material/IconButton";
-import Paper from "@mui/material/Paper";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
-import Typography from "@mui/material/Typography";
 import { GetStaticProps } from "next";
 import { useState } from "react";
 
-import Link from "../components/link";
+import { PlacePaper } from "../components/placePaper";
 import { Place } from "../types/place";
 
 import type { NextPage } from "next";
@@ -72,7 +66,7 @@ export const getStaticProps: GetStaticProps = async () => {
 const Cafe: NextPage<Props> = ({ places }) => {
   const [prefState, setPrefState] = useState("埼玉県");
 
-  const onChange = (e) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPrefState(e.target.value);
   };
   return (
@@ -85,7 +79,7 @@ const Cafe: NextPage<Props> = ({ places }) => {
             aria-labelledby="prefecture-group"
             defaultValue="埼玉県"
             name="radio-buttons-group"
-            vale={prefState}
+            value={prefState}
           >
             <FormControlLabel
               value="埼玉県"
@@ -107,43 +101,9 @@ const Cafe: NextPage<Props> = ({ places }) => {
       </Box>
       <Box mt={2}>
         {places
-          .filter((place) => place.address.match(prefState))
+          .filter((place: Place) => place?.address?.match(prefState))
           .map((place: Place) => {
-            return (
-              <Paper variant="outlined" key={place.name} sx={{ mb: 2 }}>
-                <CardContent key={place.name}>
-                  <Typography variant="h5" component="div">
-                    {place.name}
-                  </Typography>
-                  <Typography variant="body2">
-                    電話番号：{place.phoneNumber}
-                  </Typography>
-                  <Typography variant="body2">住所：{place.address}</Typography>
-                </CardContent>
-                <CardActions>
-                  {place && place?.website && (
-                    <IconButton
-                      color="inherit"
-                      href={place.website}
-                      component={Link}
-                      target="_blank"
-                    >
-                      <Home />
-                    </IconButton>
-                  )}
-                  {place && place?.url && (
-                    <IconButton
-                      color="inherit"
-                      href={place.url}
-                      component={Link}
-                      target="_blank"
-                    >
-                      <Map />
-                    </IconButton>
-                  )}
-                </CardActions>
-              </Paper>
-            );
+            return <PlacePaper key={place.name} place={place} />;
           })}
       </Box>
     </Container>
