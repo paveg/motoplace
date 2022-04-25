@@ -30,11 +30,11 @@ function App({ Component, pageProps }: CustomProps) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        <GoogleAnalytics />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <DefaultSeo {...SEO} />
+        <GoogleAnalytics />
         <Layout>
           <Component {...pageProps} />
         </Layout>
