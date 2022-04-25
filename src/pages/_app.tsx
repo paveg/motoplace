@@ -5,6 +5,7 @@ import { DefaultSeo } from "next-seo";
 import Head from "next/head";
 
 import SEO from "../../next-seo.config";
+import { GoogleAnalytics } from "../components/googleAnalytics";
 import { usePageView } from "../hooks/usePageView";
 import { Layout } from "../layout";
 import { theme } from "../styles/theme";
@@ -29,6 +30,7 @@ function App({ Component, pageProps }: CustomProps) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
+        <GoogleAnalytics />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />

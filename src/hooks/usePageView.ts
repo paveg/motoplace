@@ -9,8 +9,8 @@ export const usePageView = () => {
   useEffect(() => {
     if (!isExistGaId) return;
 
-    const handleRouteChange = (path: string, { shallow }: any) => {
-      if (!shallow) pageView(path);
+    const handleRouteChange = (url: string) => {
+      pageView(url);
     };
 
     router.events.on("routeChangeComplete", handleRouteChange);
