@@ -1,6 +1,7 @@
 import createEmotionServer from "@emotion/server/create-instance";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
+import { GoogleAnalytics } from "../components/googleAnalytics";
 import { theme } from "../styles/theme";
 import createEmotionCache from "../utilities/createEmotionCache";
 
@@ -9,6 +10,7 @@ export default class CustomDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
+          <GoogleAnalytics />
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link
             rel="stylesheet"
