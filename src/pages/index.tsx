@@ -9,8 +9,8 @@ const Home: NextPage = () => {
       <Image
         src="/temporary.jpg"
         alt="background image"
-        width={1920}
-        height={1440}
+        width={3840}
+        height={2880}
         objectFit="cover"
       />
     </Container>
