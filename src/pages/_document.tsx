@@ -1,7 +1,6 @@
 import createEmotionServer from "@emotion/server/create-instance";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-import { isExistGaId, GOOGLE_ANALYTICS_ID } from "../lib/gtag";
 import { theme } from "../styles/theme";
 import createEmotionCache from "../utilities/createEmotionCache";
 
@@ -10,27 +9,6 @@ export default class CustomDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
-          {/* Google Analytics */}
-          {isExistGaId && (
-            <>
-              <script
-                async
-                src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
-              />
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${GOOGLE_ANALYTICS_ID}', {
-                    page_path: window.location.pathname,
-                  });`,
-                }}
-              />
-            </>
-          )}
-          {/* End Google Analytics */}
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link
             rel="stylesheet"

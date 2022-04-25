@@ -9,13 +9,13 @@ export const usePageView = () => {
   useEffect(() => {
     if (!isExistGaId) return;
 
-    const handleRouteChange = (path, { shallow }) => {
+    const handleRouteChange = (path: string, { shallow }: any) => {
       if (!shallow) pageView(path);
     };
 
     router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-      router.event.off("routeChangeComplete", handleRouteChange);
+      router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
 };

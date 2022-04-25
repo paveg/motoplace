@@ -4,4 +4,7 @@ type ClickEvent = {
   label: string;
 };
 
-export type Event = ClickEvent;
+export type Event = ClickEvent & {
+  label?: Record<string, string | number | boolean>;
+  value?: string;
+};
