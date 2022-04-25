@@ -3,6 +3,7 @@ import { Map, Home } from "@mui/icons-material";
 import Box from "@mui/material/Box";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
@@ -62,7 +63,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Cafe: NextPage<Props> = ({ places }) => {
   return (
-    <>
+    <Container>
       <Box mt={5}>
         {places.map((place: Place) => {
           return (
@@ -102,7 +103,7 @@ const Cafe: NextPage<Props> = ({ places }) => {
           );
         })}
       </Box>
-    </>
+    </Container>
   );
 };
 

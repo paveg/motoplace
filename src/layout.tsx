@@ -1,4 +1,3 @@
-import Container from "@mui/material/Container";
 import Head from "next/head";
 import { ReactNode } from "react";
 
@@ -19,7 +18,7 @@ export const Layout: React.VFC<Props> = ({ children }) => {
       </Head>
       <main>
         <Header />
-        <Container>{children}</Container>
+        {children}
       </main>
       <Footer />
     </>

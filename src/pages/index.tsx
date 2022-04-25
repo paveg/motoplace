@@ -1,15 +1,19 @@
-import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Image from "next/image";
 
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <>
-      <Typography variant="h1">Home</Typography>
-      <Typography variant="body1" component="p">
-        Get started by editing <code>pages/index.tsx</code>
-      </Typography>
-    </>
+    <Container maxWidth={false} disableGutters={true} sx={{ opacity: 0.8 }}>
+      <Image
+        src="/temporary.jpg"
+        alt="background image"
+        width={1920}
+        height={1440}
+        objectFit="cover"
+      />
+    </Container>
   );
 };
 

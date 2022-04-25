@@ -14,7 +14,7 @@ export const Footer: React.VFC = () => {
         color="white"
         bgcolor="text.secondary"
       >
-        <Container maxWidth="lg" sx={{ mt: 1 }}>
+        <Container maxWidth="lg">
           <Grid container spacing={5}>
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Follow Me</Box>
